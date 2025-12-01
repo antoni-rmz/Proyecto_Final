@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Productos extends Model
 {
-    protected $table = '_productos';
+    use HasFactory;
+
     public function modelos()
     {
-        return $this->belongsToMany(Modelos::class, '_producto__modelo', 'producto-id', 'modelo-id');
+        return $this->belongsToMany(Modelos::class, 'producto_modelo', 'productos_id', 'modelos_id');
     }
 }

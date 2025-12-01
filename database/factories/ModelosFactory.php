@@ -11,12 +11,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class ModelosFactory extends Factory
 {
     protected $model = Modelos::class;
+    
     public function definition(): array
     {
         return [
             'Marca' => $this->faker->company(),
             'Modelo' => $this->faker->bothify('Model-###??'),
-            'Precio' => $this->faker->randomFloat(2, 50, 2000),
+            'Precio' => $this->faker->randomFloat(2, 50, 3000),
         ];
     }
 }
