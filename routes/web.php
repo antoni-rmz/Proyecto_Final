@@ -6,10 +6,16 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
+use App\Models\Productos;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('productos', function () {
+    $productos = Productos::with('modelos')->get();
+    return view('productos.index', compact('productos'));
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

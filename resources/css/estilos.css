@@ -1,0 +1,23 @@
+/* public/css/estilos.css */
+
+/* Importamos la fuente */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9fafb; /* gray-50 de Tailwind */
+    color: #1f2937; /* gray-800 */
+}
+
+/* Ejemplo de clase personalizada para limpiar tu HTML */
+.btn-primary {
+    background-color: #2563eb; /* blue-600 */
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8; /* blue-700 */
+}

@@ -14,11 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $productos = Productos::factory(10)->create();
-        $modelosALazar = Modelos::factory(20)->create();
-            foreach ($productos as $producto) {
-                $modelos = $modelos->random(1, 3);
-                $producto->modelos()->attach($modelosALazar);
-            }
+        $productos = \App\Models\Productos::factory(10)->create();
+        $todosLosModelos = \App\Models\Modelos::factory(20)->create();
+        foreach ($productos as $producto) {
+            $modelosParaAsignar = $todosLosModelos->random(rand(1, 3));
+            $producto->modelos()->attach($modelosParaAsignar);
+        }
     }
 }
