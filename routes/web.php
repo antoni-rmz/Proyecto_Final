@@ -7,6 +7,7 @@ use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use App\Models\Productos;
+use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,6 +17,10 @@ Route::get('productos', function () {
     $productos = Productos::with('modelos')->get();
     return view('productos.index', compact('productos'));
 });
+
+Route::get('/login', [LoginController::class, 'show'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
