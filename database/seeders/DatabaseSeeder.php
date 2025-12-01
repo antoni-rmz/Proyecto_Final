@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Productos;
+use App\Models\Modelos;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $productos = Productos::factory(10)->create();
+        $modelosALazar = Modelos::factory(20)->create();
+            foreach ($productos as $producto) {
+                $modelos = $modelos->random(1, 3);
+                $producto->modelos()->attach($modelosALazar);
+            }
     }
 }
